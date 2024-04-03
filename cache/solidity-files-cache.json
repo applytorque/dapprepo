@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "F:\\TokenSale\\next-dApp\\contracts\\TokenSale.sol": {
+    "F:\\TokenSale\\dapprepo\\contracts\\TokenSale.sol": {
       "lastModificationDate": 1712126167953,
       "contentHash": "98639df9340f05c24f2f593dd1158c4e",
       "sourceName": "contracts/TokenSale.sol",
@@ -39,7 +39,7 @@
         "TokenSale"
       ]
     },
-    "F:\\TokenSale\\next-dApp\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
+    "F:\\TokenSale\\dapprepo\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
       "lastModificationDate": 1712124769445,
       "contentHash": "5517c8678c18eb1a8ba58810e7ca39ca",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",

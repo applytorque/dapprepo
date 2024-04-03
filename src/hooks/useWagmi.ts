@@ -1,34 +1,28 @@
 import { useMemo } from "react";
-import {
-  BrowserProvider,
-  JsonRpcSigner,
-  FallbackProvider,
-  JsonRpcProvider,
-} from "ethers";
-import { type Config, useConnectorClient, useClient } from "wagmi";
-import type { Account, Chain, Client, Transport } from "viem";
+import { JsonRpcProvider, FallbackProvider } from "@ethersproject/providers";
+import { useConnectorClient, useClient, Config } from "wagmi"; // Ensure these hooks are available in your version of wagmi
+import type { Account, Chain, Client, Transport } from "viem"; // Assuming these are your custom types
 
-export function walletClientToSigner(
-  client: Client<Transport, Chain, Account>
-) {
+// Define an interface for the transport objects
+interface TransportObject {
+  url: string; // Define the expected structure of your transport objects
+}
+
+export function walletClientToSigner(client: Client<Transport, Chain, Account>) {
   const { account, chain, transport } = client;
   const network = {
     chainId: chain.id,
     name: chain.name,
     ensAddress: chain.contracts?.ensRegistry?.address,
   };
-  const provider = new BrowserProvider(transport, network);
-  const signer = new JsonRpcSigner(provider, account.address);
+  const provider = new JsonRpcProvider(transport.url, network);
+  const signer = provider.getSigner(account.address);
   return signer;
 }
 
-/** Hook to convert a viem Wallet Client to an ethers.js Signer. */
 export function useEthersSigner({ chainId }: { chainId?: number } = {}) {
   const { data: client } = useConnectorClient<Config>({ chainId });
-  return useMemo(
-    () => (client ? walletClientToSigner(client) : undefined),
-    [client]
-  );
+  return useMemo(() => (client ? walletClientToSigner(client) : undefined), [client]);
 }
 
 export function publicClientToProvider(client: Client<Transport, Chain>) {
@@ -38,21 +32,17 @@ export function publicClientToProvider(client: Client<Transport, Chain>) {
     name: chain.name,
     ensAddress: chain.contracts?.ensRegistry?.address,
   };
+
   if (transport.type === "fallback") {
-    const providers = (transport.transports as ReturnType<Transport>[]).map(
-      ({ value }) => new JsonRpcProvider(value?.url, network)
+    const providers = transport.transports.map(
+      ({ url }: TransportObject) => new JsonRpcProvider(url, network) // Use the TransportObject type for destructuring
     );
-    if (providers.length === 1) return providers[0];
-    return new FallbackProvider(providers);
+    return providers.length === 1 ? providers[0] : new FallbackProvider(providers);
   }
   return new JsonRpcProvider(transport.url, network);
 }
 
-/** Hook to convert a viem Public Client to an ethers.js Provider. */
 export function useEthersProvider({ chainId }: { chainId?: number } = {}) {
   const client = useClient<Config>({ chainId });
-  return useMemo(
-    () => (!client ? undefined : publicClientToProvider(client)),
-    [client]
-  );
+  return useMemo(() => (!client ? undefined : publicClientToProvider(client)), [client]);
 }
