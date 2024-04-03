@@ -61,6 +61,15 @@ export default function Home() {
           >
             RainbowKit
           </a>
+          <span className="mx-2 hidden sm:block">+</span>
+          <a
+            className="mt-4 sm:mt-0"
+            href="https://www.rainbowkit.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Hardhat
+          </a>
         </h2>
         <h3 className="text-2xl text-center mt-4">written in TypeScript</h3>
         <div className="flex justify-center mt-8">

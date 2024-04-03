@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 //Importing icon
-import { IoLogoGithub, IoFlash, IoPlanet } from "react-icons/io5";
-import { FaXTwitter } from "react-icons/fa6";
+import { IoLogoGithub, IoFlash} from "react-icons/io5";
+// import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   const [mounted, setMounted] = useState(false);
@@ -24,14 +24,14 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Matteo Celani
+          Torque Network
         </a>
         . All rights reserved.
       </p>
       <div className="flex justify-center items-center space-x-1">
         {/* GitHub */}
         <a
-          href="https://github.com/matteocelani"
+          href="https://github.com/applytorque"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-300 hover:text-black hover:dark:text-black hover:bg-gray-100 dark:hover:bg-gray-600"
@@ -40,15 +40,15 @@ export default function Footer() {
           <span className="sr-only">Github</span>
         </a>
         {/* Twitter */}
-        <a
-          href="https://twitter.com/0xMashu"
+        {/* <a
+          href="https://twitter.com/torquenetwork"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-300 hover:text-blue-600 hover:dark:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-600"
         >
           <FaXTwitter className="w-5 h-5" />
           <span className="sr-only">Twitter</span>
-        </a>
+        </a> */}
         {/* Bitcoin Lightning */}
         <a
           href="#"
@@ -57,18 +57,18 @@ export default function Footer() {
           className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-300 hover:text-primary hover:dark:text-primary hover:bg-gray-100 dark:hover:bg-gray-600"
         >
           <IoFlash className="w-5 h-5" />
-          <span className="sr-only">Bitcoin Wallet</span>
+          <span className="sr-only">Polygon Wallet</span>
         </a>
         {/* WebSite */}
-        <a
-          href="https://mashu.dev"
+        {/* <a
+          href="https://abc.com"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-300 hover:text-green-500 hover:dark:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-600"
         >
           <IoPlanet className="w-5 h-5" />
           <span className="sr-only">Twitter</span>
-        </a>
+        </a> */}
       </div>
     </footer>
   );

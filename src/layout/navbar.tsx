@@ -50,21 +50,21 @@ export default function NavBar() {
             <li className="flex items-center justify-center">
               <a
                 className="block px- py-2 text-black text-lg font-medium dark:text-white"
-                href="https://github.com/matteocelani/next-dApp"
+                href=""
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub
+                
               </a>
             </li>
             <li className="flex items-center justify-center">
               <a
                 className="block px-4 py-2 text-black text-lg font-medium dark:text-white"
-                href="https://www.mashu.dev/"
+                href=""
                 target="_blank"
                 rel="noreferrer"
               >
-                Website
+                
               </a>
             </li>
             <li className="flex pt-2 md:pt-0 items-center justify-center">
