@@ -103,7 +103,7 @@ const wallets = [
 ];
 
 export const wagmiConfig = getDefaultConfig({
-  appName: "Next dApp Template",
+  appName: "Token Sale",
   projectId: projectId,
   wallets: wallets,
   chains: [
